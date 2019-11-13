@@ -4,18 +4,17 @@
 //
 //  Created by phing on 2019-11-13.
 //  Copyright © 2019 phing. All rights reserved.
-//
+///Users/phing/ProjectZero/ProjectZero/Main.storyboard
 
 import UIKit
 
 class MainViewController: UIViewController, UITextFieldDelegate
 {
-    
     @IBOutlet weak var nameTextField: UITextField!
     var isUpdateScreen : Bool = false
     
     
-    @IBAction func nextButtonClick(_ sender: Any) {
+    @IBAction func nextButtonClick(_ sender: Any) { // rename to join  / create room button action
         
         let userData = UserData()
         saveName()
