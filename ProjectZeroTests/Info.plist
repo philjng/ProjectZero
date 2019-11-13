@@ -16,7 +16,15 @@
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>Please work</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>CFBundleDisplayName</key>
+	<string></string>
+	<key>CFBundleGetInfoString</key>
+	<string></string>
 </dict>
 </plist>
