@@ -87,7 +87,6 @@
 		29C8DCB42375F9BA004E60C3 = {
 			isa = PBXGroup;
 			children = (
-				29C8DD03237C8DD2004E60C3 /* UserData.swift */,
 				29C8DCBF2375F9BA004E60C3 /* ProjectZero */,
 				29C8DCD62375F9BC004E60C3 /* ProjectZeroTests */,
 				29C8DCE12375F9BC004E60C3 /* ProjectZeroUITests */,
@@ -109,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				29C8DCFC237C8907004E60C3 /* RoomViewController.swift */,
+				29C8DD03237C8DD2004E60C3 /* UserData.swift */,
 				29C8DCC02375F9BA004E60C3 /* AppDelegate.swift */,
 				29C8DCFA237C87AC004E60C3 /* ProfileViewController.swift */,
 				29C8DCF8237C8750004E60C3 /* RoomsViewController.swift */,
