@@ -19,6 +19,9 @@
 		29C8DCFD237C8907004E60C3 /* RoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C8DCFC237C8907004E60C3 /* RoomViewController.swift */; };
 		29C8DCFF237C8A23004E60C3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C8DCFE237C8A23004E60C3 /* MainViewController.swift */; };
 		29C8DD04237C8DD2004E60C3 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C8DD03237C8DD2004E60C3 /* UserData.swift */; };
+		29C8DD06237CA1A0004E60C3 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C8DD05237CA1A0004E60C3 /* AlertHelper.swift */; };
+		29C8DD08237CA1F7004E60C3 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C8DD07237CA1F7004E60C3 /* StringExtension.swift */; };
+		29C8DD0A237CA2B5004E60C3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 29C8DD09237CA2B5004E60C3 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +60,9 @@
 		29C8DCFC237C8907004E60C3 /* RoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomViewController.swift; sourceTree = "<group>"; };
 		29C8DCFE237C8A23004E60C3 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		29C8DD03237C8DD2004E60C3 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		29C8DD05237CA1A0004E60C3 /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlertHelper.swift; path = projectzero/AlertHelper.swift; sourceTree = SOURCE_ROOT; };
+		29C8DD07237CA1F7004E60C3 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		29C8DD09237CA2B5004E60C3 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = projectzero/Localizable.strings; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,11 +117,14 @@
 				29C8DD03237C8DD2004E60C3 /* UserData.swift */,
 				29C8DCC02375F9BA004E60C3 /* AppDelegate.swift */,
 				29C8DCFA237C87AC004E60C3 /* ProfileViewController.swift */,
+				29C8DD07237CA1F7004E60C3 /* StringExtension.swift */,
 				29C8DCF8237C8750004E60C3 /* RoomsViewController.swift */,
 				29C8DCF2237B6EA5004E60C3 /* Main.storyboard */,
 				29C8DCFE237C8A23004E60C3 /* MainViewController.swift */,
+				29C8DD05237CA1A0004E60C3 /* AlertHelper.swift */,
 				29C8DCC62375F9BB004E60C3 /* Assets.xcassets */,
 				29C8DCCB2375F9BB004E60C3 /* LaunchScreen.storyboard */,
+				29C8DD09237CA2B5004E60C3 /* Localizable.strings */,
 				29C8DCCE2375F9BB004E60C3 /* Info.plist */,
 				29C8DCC82375F9BB004E60C3 /* Preview Content */,
 			);
@@ -227,7 +236,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 29C8DCB82375F9BA004E60C3 /* Build configuration list for PBXProject "ProjectZero" */;
+			buildConfigurationList = 29C8DCB82375F9BA004E60C3 /* Build configuration list for PBXProject "projectzero" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -252,6 +261,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29C8DD0A237CA2B5004E60C3 /* Localizable.strings in Resources */,
 				29C8DCCD2375F9BB004E60C3 /* LaunchScreen.storyboard in Resources */,
 				29C8DCF3237B6EA5004E60C3 /* Main.storyboard in Resources */,
 				29C8DCCA2375F9BB004E60C3 /* Preview Assets.xcassets in Resources */,
@@ -284,6 +294,8 @@
 				29C8DCFF237C8A23004E60C3 /* MainViewController.swift in Sources */,
 				29C8DCC12375F9BA004E60C3 /* AppDelegate.swift in Sources */,
 				29C8DCFD237C8907004E60C3 /* RoomViewController.swift in Sources */,
+				29C8DD08237CA1F7004E60C3 /* StringExtension.swift in Sources */,
+				29C8DD06237CA1A0004E60C3 /* AlertHelper.swift in Sources */,
 				29C8DCF9237C8750004E60C3 /* RoomsViewController.swift in Sources */,
 				29C8DCFB237C87AC004E60C3 /* ProfileViewController.swift in Sources */,
 			);
@@ -569,7 +581,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		29C8DCB82375F9BA004E60C3 /* Build configuration list for PBXProject "ProjectZero" */ = {
+		29C8DCB82375F9BA004E60C3 /* Build configuration list for PBXProject "projectzero" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				29C8DCE52375F9BC004E60C3 /* Debug */,

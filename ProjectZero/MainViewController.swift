@@ -19,12 +19,8 @@ class MainViewController: UIViewController, UITextFieldDelegate
         
         let userData = UserData()
         saveName()
-        
-        if (userData.avatarId == 0) {
-            
-            AlertHelper.warn(delegate: self, message: "_alert_choose_avatar".localized)
-        }
-        else if (userData.name.isEmpty) {
+
+        if (userData.name.isEmpty) {
             
             AlertHelper.warn(delegate: self, message: "_alert_enter_name".localized)
         }
@@ -50,7 +46,7 @@ class MainViewController: UIViewController, UITextFieldDelegate
     {
         super.viewDidLoad()
         let userData = UserData()
-        isUpdateScreen = userData.hasAllDataFilled
+        isUpdateScreen = userData.hasDataFilled
         setupUI()
     }
     
@@ -70,22 +66,15 @@ class MainViewController: UIViewController, UITextFieldDelegate
     
     func setupUI() {
         
-        nextButton.layer.cornerRadius = 10
         nameTextField.delegate = self
-        pickColorButton.setTitle("_register_pick_color".localized, for: .normal)
     }
     
     func initData() {
         
         let userData = UserData()
         
-        self.navigationItem.title = userData.hasAllDataFilled ? "_register_title".localized : "_profile_title".localized
-        
-        let buttonTitle = userData.hasAllDataFilled ? "_save".localized : "_next".localized
-        nextButton.setTitle(buttonTitle, for: .normal)
-        
-        avatarButton.setImage(UIImage(named: String(format: "%@%d", Constants.kAvatarImagePrefix, userData.avatarId)), for: UIControlState.normal)
-        self.view.backgroundColor = Constants.colors[userData.colorId]
+        self.navigationItem.title = userData.hasDataFilled ? "_register_title".localized : "_profile_title".localized
+                
         
         nameTextField.text = userData.name
     }

@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let userData =  UserData()
         
         // check if all register information required (name, avatar, color) is filled
-        if (userData.hasAllDataFilled) {
+        if (userData.hasDataFilled) {
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
