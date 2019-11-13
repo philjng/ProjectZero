@@ -627,7 +627,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEVELOPMENT_TEAM = 8BZBJF5Q7N;
-				INFOPLIST_FILE = whoisthere/Info.plist;
+				INFOPLIST_FILE = projectzero/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = .com.vibe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -639,7 +639,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEVELOPMENT_TEAM = 8BZBJF5Q7N;
-				INFOPLIST_FILE = whoisthere/Info.plist;
+				INFOPLIST_FILE = projectzero/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = .com.vibe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
