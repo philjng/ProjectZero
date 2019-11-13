@@ -72,7 +72,7 @@ class MainViewController: UIViewController, UITextFieldDelegate
         
         let userData = UserData()
         
-        self.navigationItem.title = userData.hasDataFilled ? "_register_title".localized : "_profile_title".localized
+        self.navigationItem.title = userData.hasDataFilled ? "_register_title".localized : "_main_page".localized
                 
         
         nameTextField.text = userData.name
