@@ -7,10 +7,12 @@
 ///Users/phing/ProjectZero/ProjectZero/Main.storyboard
 
 import UIKit
+import CoreBluetooth
 
 class MainViewController: UIViewController, UITextFieldDelegate
 {
     @IBOutlet weak var nameTextField: UITextField!
+    
     var isUpdateScreen : Bool = false
     
     

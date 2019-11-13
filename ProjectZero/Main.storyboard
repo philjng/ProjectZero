@@ -28,7 +28,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Join Room"/>
                                 <connections>
-                                    <segue destination="OnP-Na-WKr" kind="show" id="JNL-ur-UbL"/>
+                                    <segue destination="6PH-Or-87S" kind="show" id="jB4-jp-T0k"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ErR-CK-1ae">
@@ -83,21 +83,34 @@
             </objects>
             <point key="canvasLocation" x="-117.59999999999999" y="109.29535232383809"/>
         </scene>
-        <!--Rooms View Controller-->
-        <scene sceneID="QfZ-ig-L2h">
+        <!--Rooms Table View Controller-->
+        <scene sceneID="5d2-OL-prj">
             <objects>
-                <viewController storyboardIdentifier="RoomsController" id="OnP-Na-WKr" customClass="RoomsViewController" customModule="ProjectZero" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="DjX-nm-bk5">
+                <tableViewController storyboardIdentifier="RoomsTableController" id="6PH-Or-87S" customClass="RoomsTableViewController" customModule="ProjectZero" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="IAD-rK-4dv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="Qf9-JV-jNM"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="nKZ-R9-IAC"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pyf-Sd-AGN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="DEV-vK-IuQ">
+                                <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DEV-vK-IuQ" id="ebA-dH-KRK">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="6PH-Or-87S" id="fc3-bl-giX"/>
+                            <outlet property="delegate" destination="6PH-Or-87S" id="tJh-3s-Xgk"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="UCm-WN-QIq"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UFF-Bw-O6d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1924" y="519"/>
+            <point key="canvasLocation" x="1924" y="513"/>
         </scene>
     </scenes>
 </document>
