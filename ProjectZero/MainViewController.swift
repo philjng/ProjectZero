@@ -16,31 +16,30 @@ class MainViewController: UIViewController, UITextFieldDelegate
     var isUpdateScreen : Bool = false
     
     
-    @IBAction func nextButtonClick(_ sender: Any) { // rename to join  / create room button action
-        
+    
+    @IBAction func saveUserName(_ sender: Any) {
         let userData = UserData()
         saveName()
 
         if (userData.name.isEmpty) {
-            
-            AlertHelper.warn(delegate: self, message: "_alert_enter_name".localized)
+           
+           AlertHelper.warn(delegate: self, message: "_alert_enter_name".localized)
         }
         else {
-            
-            if (isUpdateScreen) {
-                
-                self.navigationController?.popViewController(animated: true)
-            }
-            else {
-                
-                if let target = self.storyboard?.instantiateViewController(withIdentifier: "MainViewController") as? MainViewController {
-                    target.navigationItem.hidesBackButton = true;
-                    self.navigationController?.pushViewController(target, animated: true)
-                }
-            }
+           
+           if (isUpdateScreen) {
+               
+               self.navigationController?.popViewController(animated: true)
+           }
+           else {
+               
+               if let target = self.storyboard?.instantiateViewController(withIdentifier: "MainViewController") as? MainViewController {
+                   target.navigationItem.hidesBackButton = true;
+                   self.navigationController?.pushViewController(target, animated: true)
+               }
+           }
         }
     }
-    
     
     // MARK: View lifecycle
     override func viewDidLoad()

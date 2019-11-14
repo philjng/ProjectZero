@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		29A08B58237CAD9500AC3613 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A08B57237CAD9500AC3613 /* MainViewController.swift */; };
-		29A08B5C237CAE2400AC3613 /* RoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A08B5B237CAE2400AC3613 /* RoomViewController.swift */; };
 		29A08B60237CBFA700AC3613 /* RoomsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A08B5F237CBFA700AC3613 /* RoomsTableViewController.swift */; };
+		29A08B62237CCD8200AC3613 /* RoomsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A08B61237CCD8200AC3613 /* RoomsTableViewCell.swift */; };
+		29A08B64237CD34800AC3613 /* RoomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A08B63237CD34800AC3613 /* RoomTableViewController.swift */; };
+		29A08B66237CD3AC00AC3613 /* RoomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A08B65237CD3AC00AC3613 /* RoomTableViewCell.swift */; };
 		29C8DCC12375F9BA004E60C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C8DCC02375F9BA004E60C3 /* AppDelegate.swift */; };
 		29C8DCC72375F9BB004E60C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29C8DCC62375F9BB004E60C3 /* Assets.xcassets */; };
 		29C8DCCA2375F9BB004E60C3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29C8DCC92375F9BB004E60C3 /* Preview Assets.xcassets */; };
@@ -42,8 +44,10 @@
 
 /* Begin PBXFileReference section */
 		29A08B57237CAD9500AC3613 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = projectzero/MainViewController.swift; sourceTree = SOURCE_ROOT; };
-		29A08B5B237CAE2400AC3613 /* RoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RoomViewController.swift; path = ../RoomViewController.swift; sourceTree = "<group>"; };
 		29A08B5F237CBFA700AC3613 /* RoomsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsTableViewController.swift; sourceTree = "<group>"; };
+		29A08B61237CCD8200AC3613 /* RoomsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RoomsTableViewCell.swift; path = projectzero/RoomsTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		29A08B63237CD34800AC3613 /* RoomTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomTableViewController.swift; sourceTree = "<group>"; };
+		29A08B65237CD3AC00AC3613 /* RoomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RoomTableViewCell.swift; path = projectzero/RoomTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		29C8DCBD2375F9BA004E60C3 /* ProjectZero.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectZero.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29C8DCC02375F9BA004E60C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		29C8DCC62375F9BB004E60C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -112,9 +116,11 @@
 			isa = PBXGroup;
 			children = (
 				29C8DD03237C8DD2004E60C3 /* UserData.swift */,
-				29A08B5B237CAE2400AC3613 /* RoomViewController.swift */,
 				29C8DCC02375F9BA004E60C3 /* AppDelegate.swift */,
+				29A08B63237CD34800AC3613 /* RoomTableViewController.swift */,
+				29A08B65237CD3AC00AC3613 /* RoomTableViewCell.swift */,
 				29A08B5F237CBFA700AC3613 /* RoomsTableViewController.swift */,
+				29A08B61237CCD8200AC3613 /* RoomsTableViewCell.swift */,
 				29C8DD07237CA1F7004E60C3 /* StringExtension.swift */,
 				29C8DCF2237B6EA5004E60C3 /* Main.storyboard */,
 				29C8DD05237CA1A0004E60C3 /* AlertHelper.swift */,
@@ -287,12 +293,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29A08B66237CD3AC00AC3613 /* RoomTableViewCell.swift in Sources */,
 				29C8DD04237C8DD2004E60C3 /* UserData.swift in Sources */,
 				29C8DCC12375F9BA004E60C3 /* AppDelegate.swift in Sources */,
 				29C8DD08237CA1F7004E60C3 /* StringExtension.swift in Sources */,
 				29C8DD06237CA1A0004E60C3 /* AlertHelper.swift in Sources */,
+				29A08B64237CD34800AC3613 /* RoomTableViewController.swift in Sources */,
 				29A08B58237CAD9500AC3613 /* MainViewController.swift in Sources */,
-				29A08B5C237CAE2400AC3613 /* RoomViewController.swift in Sources */,
+				29A08B62237CCD8200AC3613 /* RoomsTableViewCell.swift in Sources */,
 				29A08B60237CBFA700AC3613 /* RoomsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
