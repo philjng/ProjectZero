@@ -70,7 +70,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="pbx-1P-gbX">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="pbx-1P-gbX" userLabel="RoomTableViewCell" customClass="RoomTableViewCell" customModule="ProjectZero" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pbx-1P-gbX" id="UeF-NJ-t0r">
@@ -95,7 +95,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="hnb-rN-4JW"/>
                     <connections>
-                        <outlet property="guestNameLabel" destination="A42-4i-RuT" id="vVl-oS-ABY"/>
+                        <outlet property="roomNameLabel" destination="A42-4i-RuT" id="8Mh-Jm-gbd"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gTb-tf-3dx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -129,7 +129,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="DEV-vK-IuQ">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RoomsTableViewCell" id="DEV-vK-IuQ" userLabel="RoomsTableViewCell" customClass="RoomsTableViewCell" customModule="ProjectZero" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DEV-vK-IuQ" id="ebA-dH-KRK">
@@ -155,6 +155,7 @@
                     <navigationItem key="navigationItem" id="UCm-WN-QIq"/>
                     <connections>
                         <outlet property="roomNameLabel" destination="niA-vP-Xtb" id="V7x-Cf-UYb"/>
+                        <outlet property="roomsNameLabel" destination="niA-vP-Xtb" id="Ubl-hl-HyJ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UFF-Bw-O6d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

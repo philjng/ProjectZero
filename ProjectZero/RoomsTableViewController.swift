@@ -11,7 +11,7 @@ import CoreBluetooth
 
 class RoomsTableViewController: UITableViewController {
 
-    let roomsCellReuseIdentifier = "RoomsTableCell"
+    let roomsCellReuseIdentifier = "RoomsTableViewCell"
     var visibleDevices = Array<Device>()
     var cachedDevices = Array<Device>()
     var cachedPeripheralNames = Dictionary<String, String>()
@@ -46,7 +46,7 @@ class RoomsTableViewController: UITableViewController {
         
         visibleDevices = cachedDevices
         cachedDevices.removeAll()
-        TableView?.reloadData()
+        tableView?.reloadData()
     }
     
     func updateAdvertisingData() {
@@ -66,7 +66,7 @@ class RoomsTableViewController: UITableViewController {
         if !list.contains(where: { $0.peripheral.identifier == device.peripheral.identifier }) {
             
             list.append(device)
-            TableView?.reloadData()
+            tableView?.reloadData()
         }
         else if list.contains(where: { $0.peripheral.identifier == device.peripheral.identifier
             && $0.name == "unknown"}) && device.name != "unknown" {
@@ -76,7 +76,7 @@ class RoomsTableViewController: UITableViewController {
                 if (list[index].peripheral.identifier == device.peripheral.identifier) {
                     
                     list[index].name = device.name
-                    TableView?.reloadData()
+                    tableView?.reloadData()
                     break
                 }
             }
@@ -84,17 +84,6 @@ class RoomsTableViewController: UITableViewController {
         }
     }
     
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
@@ -154,14 +143,14 @@ class RoomsTableViewController: UITableViewController {
 
 extension RoomsTableViewController {
     
-    override func tableView(_ tableView: UITableView, numberOfItemsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return visibleDevices.count
     }
     
     // make a cell for each cell index path
-    override func tableView(_ tableView: UITableView, cellForItemAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withReuseIdentifier: roomsCellReuseIdentifier, for: indexPath as IndexPath) as! RoomsTableCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: roomsCellReuseIdentifier, for: indexPath as IndexPath) as! RoomsTableViewCell
         
         let device = visibleDevices[indexPath.row]
         
@@ -169,19 +158,20 @@ extension RoomsTableViewController {
         
         if (advertisementData.count > 1) {
             
-            cell.nameLabel?.text = advertisementData[0]
+            cell.roomsNameLabel.text = advertisementData[0]
         }
         else {
-            cell.nameLabel?.text = device.name
+            cell.roomsNameLabel.text = device.name
         }
         
         return cell
     }
+    
 }
 
-extension MainViewController {
+extension RoomsTableViewController {
     
-    override func tableView(_ tableView: UITableView, didSelectItemAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        
 //        let chatViewController = ChatViewController()
 //        chatViewController.deviceUUID = visibleDevices[indexPath.row].peripheral.identifier
@@ -190,7 +180,8 @@ extension MainViewController {
     }
 }
 
-extension MainViewController : CBPeripheralManagerDelegate {
+
+extension RoomsTableViewController : CBPeripheralManagerDelegate {
     
     func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
         

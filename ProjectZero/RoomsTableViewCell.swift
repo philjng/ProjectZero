@@ -10,5 +10,5 @@ import UIKit
 
 class RoomsTableViewCell: UITableViewCell {
     
-    @IBOutlet var roomNameLabel: UILabel!
+    @IBOutlet var roomsNameLabel: UILabel!
 }
