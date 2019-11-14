@@ -31,6 +31,7 @@ struct UserData {
         var dictionary : Dictionary = Dictionary<String, Any>()
         dictionary["name"] = name
         UserDefaults.standard.set(dictionary, forKey: userDataKey)
+        print("the username : ",name,"is successfully saved!")
     }
     
 }

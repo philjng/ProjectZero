@@ -10,7 +10,7 @@
         <!--Main View Controller-->
         <scene sceneID="gY7-qx-Erb">
             <objects>
-                <viewController storyboardIdentifier="MainController" id="KGI-7b-XMa" customClass="MainViewController" customModule="ProjectZero" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" id="KGI-7b-XMa" customClass="MainViewController" customModule="ProjectZero" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gSK-67-LsJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -64,7 +64,7 @@
         <!--Room Table View Controller-->
         <scene sceneID="Lag-pf-k2I">
             <objects>
-                <tableViewController storyboardIdentifier="RoomTableController" id="o06-CO-gxI" customClass="RoomTableViewController" customModule="ProjectZero" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="RoomTableViewController" id="o06-CO-gxI" customClass="RoomTableViewController" customModule="ProjectZero" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="nN2-C1-zpJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -123,7 +123,7 @@
         <!--Rooms Table View Controller-->
         <scene sceneID="5d2-OL-prj">
             <objects>
-                <tableViewController storyboardIdentifier="RoomsTableController" id="6PH-Or-87S" customClass="RoomsTableViewController" customModule="ProjectZero" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="RoomsTableViewController" id="6PH-Or-87S" customClass="RoomsTableViewController" customModule="ProjectZero" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="IAD-rK-4dv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
