@@ -9,9 +9,7 @@
 /* Begin PBXBuildFile section */
 		29A08B58237CAD9500AC3613 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A08B57237CAD9500AC3613 /* MainViewController.swift */; };
 		29A08B60237CBFA700AC3613 /* RoomsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A08B5F237CBFA700AC3613 /* RoomsTableViewController.swift */; };
-		29A08B62237CCD8200AC3613 /* RoomsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A08B61237CCD8200AC3613 /* RoomsTableViewCell.swift */; };
 		29A08B64237CD34800AC3613 /* RoomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A08B63237CD34800AC3613 /* RoomTableViewController.swift */; };
-		29A08B66237CD3AC00AC3613 /* RoomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A08B65237CD3AC00AC3613 /* RoomTableViewCell.swift */; };
 		29A08B68237CE81C00AC3613 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A08B67237CE81C00AC3613 /* Constants.swift */; };
 		29A08B6A237CE8B800AC3613 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A08B69237CE8B800AC3613 /* Device.swift */; };
 		29C8DCC12375F9BA004E60C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C8DCC02375F9BA004E60C3 /* AppDelegate.swift */; };
@@ -25,6 +23,8 @@
 		29C8DD06237CA1A0004E60C3 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C8DD05237CA1A0004E60C3 /* AlertHelper.swift */; };
 		29C8DD08237CA1F7004E60C3 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C8DD07237CA1F7004E60C3 /* StringExtension.swift */; };
 		29C8DD0A237CA2B5004E60C3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 29C8DD09237CA2B5004E60C3 /* Localizable.strings */; };
+		E4D0CC96237DF67000171706 /* RoomsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D0CC95237DF67000171706 /* RoomsTableViewCell.swift */; };
+		E4D0CC98237DF6F200171706 /* RoomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D0CC97237DF6F200171706 /* RoomTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,9 +47,7 @@
 /* Begin PBXFileReference section */
 		29A08B57237CAD9500AC3613 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = projectzero/MainViewController.swift; sourceTree = SOURCE_ROOT; };
 		29A08B5F237CBFA700AC3613 /* RoomsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsTableViewController.swift; sourceTree = "<group>"; };
-		29A08B61237CCD8200AC3613 /* RoomsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RoomsTableViewCell.swift; path = projectzero/RoomsTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		29A08B63237CD34800AC3613 /* RoomTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomTableViewController.swift; sourceTree = "<group>"; };
-		29A08B65237CD3AC00AC3613 /* RoomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RoomTableViewCell.swift; path = projectzero/RoomTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		29A08B67237CE81C00AC3613 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = projectzero/Constants.swift; sourceTree = SOURCE_ROOT; };
 		29A08B69237CE8B800AC3613 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Device.swift; path = projectzero/Device.swift; sourceTree = SOURCE_ROOT; };
 		29C8DCBD2375F9BA004E60C3 /* ProjectZero.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectZero.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,6 +67,8 @@
 		29C8DD05237CA1A0004E60C3 /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlertHelper.swift; path = projectzero/AlertHelper.swift; sourceTree = SOURCE_ROOT; };
 		29C8DD07237CA1F7004E60C3 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		29C8DD09237CA2B5004E60C3 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = projectzero/Localizable.strings; sourceTree = SOURCE_ROOT; };
+		E4D0CC95237DF67000171706 /* RoomsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsTableViewCell.swift; sourceTree = "<group>"; };
+		E4D0CC97237DF6F200171706 /* RoomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,10 +123,8 @@
 				29C8DCC02375F9BA004E60C3 /* AppDelegate.swift */,
 				29A08B63237CD34800AC3613 /* RoomTableViewController.swift */,
 				29A08B69237CE8B800AC3613 /* Device.swift */,
-				29A08B65237CD3AC00AC3613 /* RoomTableViewCell.swift */,
 				29A08B5F237CBFA700AC3613 /* RoomsTableViewController.swift */,
 				29A08B67237CE81C00AC3613 /* Constants.swift */,
-				29A08B61237CCD8200AC3613 /* RoomsTableViewCell.swift */,
 				29C8DD07237CA1F7004E60C3 /* StringExtension.swift */,
 				29C8DCF2237B6EA5004E60C3 /* Main.storyboard */,
 				29C8DD05237CA1A0004E60C3 /* AlertHelper.swift */,
@@ -136,6 +134,8 @@
 				29C8DD09237CA2B5004E60C3 /* Localizable.strings */,
 				29C8DCCE2375F9BB004E60C3 /* Info.plist */,
 				29C8DCC82375F9BB004E60C3 /* Preview Content */,
+				E4D0CC95237DF67000171706 /* RoomsTableViewCell.swift */,
+				E4D0CC97237DF6F200171706 /* RoomTableViewCell.swift */,
 			);
 			path = ProjectZero;
 			sourceTree = "<group>";
@@ -245,7 +245,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 29C8DCB82375F9BA004E60C3 /* Build configuration list for PBXProject "projectzero" */;
+			buildConfigurationList = 29C8DCB82375F9BA004E60C3 /* Build configuration list for PBXProject "ProjectZero" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -300,15 +300,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				29A08B6A237CE8B800AC3613 /* Device.swift in Sources */,
-				29A08B66237CD3AC00AC3613 /* RoomTableViewCell.swift in Sources */,
+				E4D0CC96237DF67000171706 /* RoomsTableViewCell.swift in Sources */,
 				29C8DD04237C8DD2004E60C3 /* UserData.swift in Sources */,
 				29C8DCC12375F9BA004E60C3 /* AppDelegate.swift in Sources */,
 				29C8DD08237CA1F7004E60C3 /* StringExtension.swift in Sources */,
 				29C8DD06237CA1A0004E60C3 /* AlertHelper.swift in Sources */,
 				29A08B68237CE81C00AC3613 /* Constants.swift in Sources */,
+				E4D0CC98237DF6F200171706 /* RoomTableViewCell.swift in Sources */,
 				29A08B64237CD34800AC3613 /* RoomTableViewController.swift in Sources */,
 				29A08B58237CAD9500AC3613 /* MainViewController.swift in Sources */,
-				29A08B62237CCD8200AC3613 /* RoomsTableViewCell.swift in Sources */,
 				29A08B60237CBFA700AC3613 /* RoomsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -476,14 +476,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"ProjectZero/Preview Content\"";
-				DEVELOPMENT_TEAM = 8BZBJF5Q7N;
+				DEVELOPMENT_TEAM = 5NTPRVPUDN;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ProjectZero/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.vibeshare.ProjectZero;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vibeshare.ProjectZero232343;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -593,7 +593,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		29C8DCB82375F9BA004E60C3 /* Build configuration list for PBXProject "projectzero" */ = {
+		29C8DCB82375F9BA004E60C3 /* Build configuration list for PBXProject "ProjectZero" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				29C8DCE52375F9BC004E60C3 /* Debug */,

@@ -169,16 +169,16 @@ extension RoomsTableViewController {
     
 }
 
-extension RoomsTableViewController {
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        
-//        let chatViewController = ChatViewController()
-//        chatViewController.deviceUUID = visibleDevices[indexPath.row].peripheral.identifier
-//        chatViewController.deviceAttributes = visibleDevices[indexPath.row].name
-//        self.navigationController?.pushViewController(chatViewController, animated: true)
-    }
-}
+//extension RoomsTableViewController {
+//
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+////
+////        let chatViewController = ChatViewController()
+////        chatViewController.deviceUUID = visibleDevices[indexPath.row].peripheral.identifier
+////        chatViewController.deviceAttributes = visibleDevices[indexPath.row].name
+////        self.navigationController?.pushViewController(chatViewController, animated: true)
+//    }
+//}
 
 
 extension RoomsTableViewController : CBPeripheralManagerDelegate {
