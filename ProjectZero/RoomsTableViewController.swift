@@ -28,6 +28,7 @@ class RoomsTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        centralManager = CBCentralManager(delegate: self, queue: DispatchQueue.main)
      
     }
 
@@ -37,17 +38,17 @@ class RoomsTableViewController: UITableViewController {
         updateAdvertisingData()
     }
     
-    func scheduledTimerWithTimeInterval(){
-        
-        timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.clearPeripherals), userInfo: nil, repeats: true)
-    }
+//    func scheduledTimerWithTimeInterval(){
+//
+//        timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.clearPeripherals), userInfo: nil, repeats: true)
+//    }
     
-    @objc func clearPeripherals(){
-        
-        visibleDevices = cachedDevices
-        cachedDevices.removeAll()
-        tableView?.reloadData()
-    }
+//    @objc func clearPeripherals(){
+//
+//        visibleDevices = cachedDevices
+//        cachedDevices.removeAll()
+//        tableView?.reloadData()
+//    }
     
     func updateAdvertisingData() {
         
@@ -141,33 +142,33 @@ class RoomsTableViewController: UITableViewController {
 
 }
 
-extension RoomsTableViewController {
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return visibleDevices.count
-    }
-    
-    // make a cell for each cell index path
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: roomsCellReuseIdentifier, for: indexPath as IndexPath) as! RoomsTableViewCell
-        
-        let device = visibleDevices[indexPath.row]
-        
-        let advertisementData = device.name.components(separatedBy: "|")
-        
-        if (advertisementData.count > 1) {
-            
-            cell.roomsNameLabel.text = advertisementData[0]
-        }
-        else {
-            cell.roomsNameLabel.text = device.name
-        }
-        
-        return cell
-    }
-    
-}
+//extension RoomsTableViewController {
+//
+//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return visibleDevices.count
+//    }
+//
+//    // make a cell for each cell index path
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//
+//        let cell = tableView.dequeueReusableCell(withIdentifier: roomsCellReuseIdentifier, for: indexPath as IndexPath) as! RoomsTableViewCell
+//
+//        let device = visibleDevices[indexPath.row]
+//        print("(rooms)device: ", device)
+//        let advertisementData = device.name.components(separatedBy: "|")
+//
+//        if (advertisementData.count > 1) {
+//
+//            cell.roomsNameLabel.text = advertisementData[0]
+//        }
+//        else {
+//            cell.roomsNameLabel.text = device.name
+//        }
+//
+//        return cell
+//    }
+//
+//}
 
 //extension RoomsTableViewController {
 //
@@ -181,20 +182,21 @@ extension RoomsTableViewController {
 //}
 
 
-extension RoomsTableViewController : CBPeripheralManagerDelegate {
-    
-    func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
-        
-        if (peripheral.state == .poweredOn){
-            
-            updateAdvertisingData()
-        }
-    }
-}
+//extension RoomsTableViewController : CBPeripheralManagerDelegate {
+//
+//    func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
+//
+//        if (peripheral.state == .poweredOn){
+//
+//            updateAdvertisingData()
+//        }
+//    }
+//}
 
 extension RoomsTableViewController : CBCentralManagerDelegate {
     
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
+        print("rooms state is powered on: ", central.state == .poweredOn)
         if (central.state == .poweredOn){
             
             self.centralManager?.scanForPeripherals(withServices: [Constants.SERVICE_UUID], options: [CBCentralManagerScanOptionAllowDuplicatesKey : true])
@@ -216,5 +218,6 @@ extension RoomsTableViewController : CBCentralManagerDelegate {
         
         self.addOrUpdatePeripheralList(device: device, list: &visibleDevices)
         self.addOrUpdatePeripheralList(device: device, list: &cachedDevices)
+        print("visible devices: ", visibleDevices)
     }
 }

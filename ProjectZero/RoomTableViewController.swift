@@ -32,30 +32,30 @@ class RoomTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
         centralManager = CBCentralManager(delegate: self, queue: DispatchQueue.main)
-        print("central manager: ", centralManager)
-//        peripheralManager = CBPeripheralManager(delegate: self, queue: nil)
+//        print("central manager: ", centralManager)
+        peripheralManager = CBPeripheralManager(delegate: self, queue: nil)
     }
     
-//    func updateAdvertisingData() {
-//
-//        if (peripheralManager.isAdvertising) {
-//            peripheralManager.stopAdvertising()
-//        }
-//
-//        let userData = UserData()
-//        let advertisementData = String(format: "%@", userData.name)
-//
-//        peripheralManager.startAdvertising([CBAdvertisementDataServiceUUIDsKey:[Constants.SERVICE_UUID], CBAdvertisementDataLocalNameKey: advertisementData])
-//    }
-//
-//    func initService() {
-//
-//        let serialService = CBMutableService(type: Constants.SERVICE_UUID, primary: true)
-//        let rx = CBMutableCharacteristic(type: Constants.RX_UUID, properties: Constants.RX_PROPERTIES, value: nil, permissions: Constants.RX_PERMISSIONS)
-//        serialService.characteristics = [rx]
-//
-//        peripheralManager.add(serialService)
-//    }
+    func updateAdvertisingData() {
+
+        if (peripheralManager.isAdvertising) {
+            peripheralManager.stopAdvertising()
+        }
+
+        let userData = UserData()
+        let advertisementData = String(format: "%@", userData.name)
+
+        peripheralManager.startAdvertising([CBAdvertisementDataServiceUUIDsKey:[Constants.SERVICE_UUID], CBAdvertisementDataLocalNameKey: advertisementData])
+    }
+
+    func initService() {
+
+        let serialService = CBMutableService(type: Constants.SERVICE_UUID, primary: true)
+        let rx = CBMutableCharacteristic(type: Constants.RX_UUID, properties: Constants.RX_PROPERTIES, value: nil, permissions: Constants.RX_PERMISSIONS)
+        serialService.characteristics = [rx]
+
+        peripheralManager.add(serialService)
+    }
 //
 //    @objc func clearPeripherals(){
 //
@@ -63,6 +63,7 @@ class RoomTableViewController: UITableViewController {
 //        cachedDevices.removeAll()
 //        tableView?.reloadData()
 //    }
+    
     func addOrUpdatePeripheralList(device: Device, list: inout Array<Device>) {
 
         if !list.contains(where: { $0.peripheral.identifier == device.peripheral.identifier }) {
@@ -110,9 +111,9 @@ extension RoomTableViewController : CBCentralManagerDelegate {
         }
         
         let device = Device(peripheral: peripheral, name: peripheralName)
-        print("device: ", device)
         self.addOrUpdatePeripheralList(device: device, list: &visibleDevices)
         self.addOrUpdatePeripheralList(device: device, list: &cachedDevices)
+        print("host visible devices (should be none until someone joins the room: ", visibleDevices)
     }
 }
 
@@ -128,18 +129,18 @@ extension RoomTableViewController : CBCentralManagerDelegate {
 //
 //}
 
-//extension RoomTableViewController : CBPeripheralManagerDelegate {
-//
-//    func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
-//
-//        if (peripheral.state == .poweredOn){
-//
-//            initService()
-//            updateAdvertisingData()
-//        }
-//    }
-//
-//}
+extension RoomTableViewController : CBPeripheralManagerDelegate {
+
+    func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
+
+        if (peripheral.state == .poweredOn){
+
+            initService()
+            updateAdvertisingData()
+        }
+    }
+
+}
 
 //extension RoomTableViewController {
 //
