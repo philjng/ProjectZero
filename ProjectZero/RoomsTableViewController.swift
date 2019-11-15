@@ -11,14 +11,17 @@ import CoreBluetooth
 
 class RoomsTableViewController: UITableViewController {
 
+    
+    var peripheralManager = CBPeripheralManager()
+    var centralManager: CBCentralManager?
+    
     let roomsCellReuseIdentifier = "RoomsTableViewCell"
     var visibleDevices = Array<Device>()
     var cachedDevices = Array<Device>()
     var cachedPeripheralNames = Dictionary<String, String>()
     var timer = Timer()
 
-    var peripheralManager = CBPeripheralManager()
-    var centralManager: CBCentralManager?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +33,7 @@ class RoomsTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         centralManager = CBCentralManager(delegate: self, queue: DispatchQueue.main)
      
+        scheduledTimerWithTimeInterval()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -38,20 +42,20 @@ class RoomsTableViewController: UITableViewController {
         updateAdvertisingData()
     }
     
-//    func scheduledTimerWithTimeInterval(){
-//
-//        timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.clearPeripherals), userInfo: nil, repeats: true)
-//    }
+    func scheduledTimerWithTimeInterval(){
+
+        timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.clearPeripherals), userInfo: nil, repeats: true)
+    }
     
-//    @objc func clearPeripherals(){
-//
-//        visibleDevices = cachedDevices
-//        cachedDevices.removeAll()
-//        tableView?.reloadData()
-//    }
+    @objc func clearPeripherals(){
+
+        visibleDevices = cachedDevices
+        cachedDevices.removeAll()
+        tableView?.reloadData()
+    }
     
     func updateAdvertisingData() {
-        
+        print("also here doing stuff i shouldn't be")
         if (peripheralManager.isAdvertising) {
             peripheralManager.stopAdvertising()
         }
@@ -85,25 +89,6 @@ class RoomsTableViewController: UITableViewController {
         }
     }
     
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -113,73 +98,54 @@ class RoomsTableViewController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
-//extension RoomsTableViewController {
-//
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return visibleDevices.count
-//    }
-//
-//    // make a cell for each cell index path
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//
-//        let cell = tableView.dequeueReusableCell(withIdentifier: roomsCellReuseIdentifier, for: indexPath as IndexPath) as! RoomsTableViewCell
-//
-//        let device = visibleDevices[indexPath.row]
-//        print("(rooms)device: ", device)
-//        let advertisementData = device.name.components(separatedBy: "|")
-//
-//        if (advertisementData.count > 1) {
-//
-//            cell.roomsNameLabel.text = advertisementData[0]
-//        }
-//        else {
-//            cell.roomsNameLabel.text = device.name
-//        }
-//
-//        return cell
-//    }
-//
-//}
+extension RoomsTableViewController {
 
-//extension RoomsTableViewController {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("section: ", section)
+//        return visibleDevices.count
+        return 1
+    }
+
+    // make a cell for each cell index path
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: roomsCellReuseIdentifier, for: indexPath as IndexPath) as! RoomsTableViewCell
+//        print("visibleDevices[indexPath.row]: ", visibleDevices[indexPath.row])
+        if (visibleDevices.isEmpty) {
+            return cell
+        }
+        else {
+            let device = visibleDevices[indexPath.row]
+            let advertisementData = device.name.components(separatedBy: "|")
+
+            if (advertisementData.count > 1) {
+
+                cell.roomsNameLabel.text = advertisementData[0]
+            }
+            else {
+                cell.roomsNameLabel.text = device.name
+            }
+
+            return cell
+        }
+        
+    }
+
+}
+
+extension RoomsTableViewController {
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-////
-////        let chatViewController = ChatViewController()
-////        chatViewController.deviceUUID = visibleDevices[indexPath.row].peripheral.identifier
-////        chatViewController.deviceAttributes = visibleDevices[indexPath.row].name
-////        self.navigationController?.pushViewController(chatViewController, animated: true)
-//    }
-//}
+//        let chatViewController = ChatViewController()
+//        chatViewController.deviceUUID = visibleDevices[indexPath.row].peripheral.identifier
+//        chatViewController.deviceAttributes = visibleDevices[indexPath.row].name
+//        self.navigationController?.pushViewController(chatViewController, animated: true)
+    }
+}
 
 
 //extension RoomsTableViewController : CBPeripheralManagerDelegate {
