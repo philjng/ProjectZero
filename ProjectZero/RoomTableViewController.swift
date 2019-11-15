@@ -30,155 +30,152 @@ class RoomTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
         centralManager = CBCentralManager(delegate: self, queue: DispatchQueue.main)
-        peripheralManager = CBPeripheralManager(delegate: self, queue: nil)
+        print("central manager: ", centralManager)
+//        peripheralManager = CBPeripheralManager(delegate: self, queue: nil)
     }
     
-    func updateAdvertisingData() {
-        
-        if (peripheralManager.isAdvertising) {
-            peripheralManager.stopAdvertising()
-        }
-        
-        let userData = UserData()
-        let advertisementData = String(format: "%@", userData.name)
-        
-        peripheralManager.startAdvertising([CBAdvertisementDataServiceUUIDsKey:[Constants.SERVICE_UUID], CBAdvertisementDataLocalNameKey: advertisementData])
-    }
-    
-    func initService() {
-        
-        let serialService = CBMutableService(type: Constants.SERVICE_UUID, primary: true)
-        let rx = CBMutableCharacteristic(type: Constants.RX_UUID, properties: Constants.RX_PROPERTIES, value: nil, permissions: Constants.RX_PERMISSIONS)
-        serialService.characteristics = [rx]
-        
-        peripheralManager.add(serialService)
-    }
-
-    @objc func clearPeripherals(){
-        
-        visibleDevices = cachedDevices
-        cachedDevices.removeAll()
-        tableView?.reloadData()
-    }
+//    func updateAdvertisingData() {
+//
+//        if (peripheralManager.isAdvertising) {
+//            peripheralManager.stopAdvertising()
+//        }
+//
+//        let userData = UserData()
+//        let advertisementData = String(format: "%@", userData.name)
+//
+//        peripheralManager.startAdvertising([CBAdvertisementDataServiceUUIDsKey:[Constants.SERVICE_UUID], CBAdvertisementDataLocalNameKey: advertisementData])
+//    }
+//
+//    func initService() {
+//
+//        let serialService = CBMutableService(type: Constants.SERVICE_UUID, primary: true)
+//        let rx = CBMutableCharacteristic(type: Constants.RX_UUID, properties: Constants.RX_PROPERTIES, value: nil, permissions: Constants.RX_PERMISSIONS)
+//        serialService.characteristics = [rx]
+//
+//        peripheralManager.add(serialService)
+//    }
+//
+//    @objc func clearPeripherals(){
+//
+//        visibleDevices = cachedDevices
+//        cachedDevices.removeAll()
+//        tableView?.reloadData()
+//    }
     func addOrUpdatePeripheralList(device: Device, list: inout Array<Device>) {
 
         if !list.contains(where: { $0.peripheral.identifier == device.peripheral.identifier }) {
-            
+
             list.append(device)
             tableView?.reloadData()
         }
         else if list.contains(where: { $0.peripheral.identifier == device.peripheral.identifier
             && $0.name == "unknown"}) && device.name != "unknown" {
-            
+
             for index in 0..<list.count {
-                
+
                 if (list[index].peripheral.identifier == device.peripheral.identifier) {
-                    
+
                     list[index].name = device.name
                     tableView?.reloadData()
                     break
                 }
             }
-            
+
         }
     }
 }
 
 
 extension RoomTableViewController : CBCentralManagerDelegate {
-    
-    func centralManagerDidUpdateState(_ central: CBCentralManager) {
-        
-        if (central.state == .poweredOn){
-            
-            self.centralManager?.scanForPeripherals(withServices: [Constants.SERVICE_UUID], options: [CBCentralManagerScanOptionAllowDuplicatesKey : true])
-            
-        }
-    }
-    
-    func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        
-        if (peripheral.identifier == deviceUUID) {
-            
-            selectedPeripheral = peripheral
-        }
-    }
-    
-    
-    func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        
-        peripheral.delegate = self
-        peripheral.discoverServices(nil)
-        let peripheralName = cachedPeripheralNames[peripheral.identifier.description] ?? "unknown"
 
+    func centralManagerDidUpdateState(_ central: CBCentralManager) {
+        print("state is powered on: ", central.state == .poweredOn)
+        if (central.state == .poweredOn){
+
+            self.centralManager?.scanForPeripherals(withServices: [Constants.SERVICE_UUID], options: [CBCentralManagerScanOptionAllowDuplicatesKey : true])
+
+        }
+    }
+
+    func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
+        print("here")
+        var peripheralName = cachedPeripheralNames[peripheral.identifier.description] ?? "unknown"
+
+        if let advertisementName = advertisementData[CBAdvertisementDataLocalNameKey] as? String {
+
+            peripheralName = advertisementName
+            cachedPeripheralNames[peripheral.identifier.description] = peripheralName
+        }
         
         let device = Device(peripheral: peripheral, name: peripheralName)
-              
+        print("device: ", device)
         self.addOrUpdatePeripheralList(device: device, list: &visibleDevices)
         self.addOrUpdatePeripheralList(device: device, list: &cachedDevices)
     }
 }
 
-extension RoomTableViewController : CBPeripheralDelegate {
-    
-    func peripheral( _ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
-        
-        for service in peripheral.services! {
-            
-            peripheral.discoverCharacteristics(nil, for: service)
-        }
-    }
-    
-}
+//extension RoomTableViewController : CBPeripheralDelegate {
+//
+//    func peripheral( _ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
+//
+//        for service in peripheral.services! {
+//
+//            peripheral.discoverCharacteristics(nil, for: service)
+//        }
+//    }
+//
+//}
 
-extension RoomTableViewController : CBPeripheralManagerDelegate {
-    
-    func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
-        
-        if (peripheral.state == .poweredOn){
-            
-            initService()
-            updateAdvertisingData()
-        }
-    }
-    
-}
+//extension RoomTableViewController : CBPeripheralManagerDelegate {
+//
+//    func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
+//
+//        if (peripheral.state == .poweredOn){
+//
+//            initService()
+//            updateAdvertisingData()
+//        }
+//    }
+//
+//}
 
-extension RoomTableViewController {
+//extension RoomTableViewController {
+//
+//    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+//        return 1
+//    }
+//
+//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return 1
+//    }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//
+//        let cell  = tableView.dequeueReusableCell(withIdentifier: "RoomTableViewCell", for: indexPath) as! RoomTableViewCell
+//        print("this is indexpath.row", indexPath.row)
+//
+//        let device = visibleDevices[indexPath.row]
+//
+//        let advertisementData = device.name.components(separatedBy: "|")
+//
+//        if (advertisementData.count > 1) {
+//
+//            cell.roomNameLabel.text = advertisementData[0]
+//        }
+//        else {
+//            cell.roomNameLabel.text = device.name
+//        }
+//
+//        return cell
+//    }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell  = tableView.dequeueReusableCell(withIdentifier: "RoomTableViewCell", for: indexPath) as! RoomTableViewCell
-        
-        let device = visibleDevices[indexPath.row]
-
-        let advertisementData = device.name.components(separatedBy: "|")
-
-        if (advertisementData.count > 1) {
-            
-            cell.roomNameLabel.text = advertisementData[0]
-        }
-        else {
-            cell.roomNameLabel.text = device.name
-        }
-        
-        return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        return UITableView.automaticDimension
-    }
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//
+//        return UITableView.automaticDimension
+//    }
      
 
     
-}
+//}

@@ -245,7 +245,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 29C8DCB82375F9BA004E60C3 /* Build configuration list for PBXProject "ProjectZero" */;
+			buildConfigurationList = 29C8DCB82375F9BA004E60C3 /* Build configuration list for PBXProject "projectzero" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -476,14 +476,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"ProjectZero/Preview Content\"";
-				DEVELOPMENT_TEAM = 5NTPRVPUDN;
+				DEVELOPMENT_TEAM = 8BZBJF5Q7N;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ProjectZero/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.vibeshare.ProjectZero232343;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vibeshare.ProjectZero;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -593,7 +593,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		29C8DCB82375F9BA004E60C3 /* Build configuration list for PBXProject "ProjectZero" */ = {
+		29C8DCB82375F9BA004E60C3 /* Build configuration list for PBXProject "projectzero" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				29C8DCE52375F9BC004E60C3 /* Debug */,
