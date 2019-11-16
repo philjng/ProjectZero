@@ -11,6 +11,7 @@ import CoreBluetooth
 
 class RoomsTableViewController: UITableViewController {
 
+    let lock = NSLock()
     
     var peripheralManager = CBPeripheralManager()
     var centralManager: CBCentralManager?
@@ -48,7 +49,6 @@ class RoomsTableViewController: UITableViewController {
     }
     
     @objc func clearPeripherals(){
-
         visibleDevices = cachedDevices
         cachedDevices.removeAll()
         tableView?.reloadData()
@@ -69,8 +69,9 @@ class RoomsTableViewController: UITableViewController {
     func addOrUpdatePeripheralList(device: Device, list: inout Array<Device>) {
 
         if !list.contains(where: { $0.peripheral.identifier == device.peripheral.identifier }) {
-            
+            lock.lock()
             list.append(device)
+            lock.unlock()
             tableView?.reloadData()
         }
         else if list.contains(where: { $0.peripheral.identifier == device.peripheral.identifier
@@ -102,11 +103,9 @@ class RoomsTableViewController: UITableViewController {
 }
 
 extension RoomsTableViewController {
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("section: ", section)
-//        return visibleDevices.count
-        return 1
+        return visibleDevices.count
+//        return 1
     }
 
     // make a cell for each cell index path
@@ -181,7 +180,6 @@ extension RoomsTableViewController : CBCentralManagerDelegate {
         }
         
         let device = Device(peripheral: peripheral, name: peripheralName)
-        
         self.addOrUpdatePeripheralList(device: device, list: &visibleDevices)
         self.addOrUpdatePeripheralList(device: device, list: &cachedDevices)
         print("visible devices: ", visibleDevices)
