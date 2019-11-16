@@ -10,8 +10,8 @@ import UIKit
 import CoreBluetooth
 
 class RoomsTableViewController: UITableViewController {
-
-    let lock = NSLock()
+    
+//    var lock = NSLock()
     
     var peripheralManager = CBPeripheralManager()
     var centralManager: CBCentralManager?
@@ -69,9 +69,9 @@ class RoomsTableViewController: UITableViewController {
     func addOrUpdatePeripheralList(device: Device, list: inout Array<Device>) {
 
         if !list.contains(where: { $0.peripheral.identifier == device.peripheral.identifier }) {
-            lock.lock()
+//            lock.lock()               // don't know if these help
             list.append(device)
-            lock.unlock()
+//            lock.unlock()
             tableView?.reloadData()
         }
         else if list.contains(where: { $0.peripheral.identifier == device.peripheral.identifier

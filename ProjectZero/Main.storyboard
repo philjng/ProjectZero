@@ -20,7 +20,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Join Room"/>
                                 <connections>
-                                    <segue destination="6PH-Or-87S" kind="show" id="jB4-jp-T0k"/>
+                                    <action selector="joinRoom:" destination="KGI-7b-XMa" eventType="touchUpInside" id="e5Z-Pa-bFu"/>
+                                    <segue destination="6PH-Or-87S" kind="show" id="qjm-tC-99A"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ErR-CK-1ae">
@@ -29,23 +30,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fpp-uk-daf">
-                                <rect key="frame" x="170" y="178" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Save">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="saveUserName:" destination="KGI-7b-XMa" eventType="touchUpInside" id="tcz-TF-PnF"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xRr-Io-SYG">
                                 <rect key="frame" x="143" y="252" width="89" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Create Room"/>
                                 <connections>
-                                    <segue destination="o06-CO-gxI" kind="show" id="Ovp-gQ-jQb"/>
+                                    <action selector="createRoom:" destination="KGI-7b-XMa" eventType="touchUpInside" id="Jmr-VC-hZe"/>
+                                    <segue destination="o06-CO-gxI" kind="show" id="CaN-p8-PUu"/>
                                 </connections>
                             </button>
                         </subviews>

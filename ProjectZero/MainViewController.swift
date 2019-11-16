@@ -15,31 +15,53 @@ class MainViewController: UIViewController, UITextFieldDelegate
     
     var isUpdateScreen : Bool = false
     
-    
-    
-    @IBAction func saveUserName(_ sender: Any) {
-        let userData = UserData()
+        
+    @IBAction func createRoom(_ sender: Any) {
         saveName()
 
-        if (userData.name.isEmpty) {
-           
-           AlertHelper.warn(delegate: self, message: "_alert_enter_name".localized)
+        if (nameTextField!.text! == "") {
+          
+          AlertHelper.warn(delegate: self, message: "_alert_enter_name".localized)
         }
-        else {
-           
-           if (isUpdateScreen) {
-               
-               self.navigationController?.popViewController(animated: true)
-           }
-           else {
-               
-               if let target = self.storyboard?.instantiateViewController(withIdentifier: "MainViewController") as? MainViewController {
-                   target.navigationItem.hidesBackButton = true;
-                   self.navigationController?.pushViewController(target, animated: true)
-               }
-           }
-        }
+//        else {
+//
+//          if (isUpdateScreen) {
+//
+//              self.navigationController?.popViewController(animated: true)
+//          }
+//          else {
+//
+//              if let target = self.storyboard?.instantiateViewController(withIdentifier: "MainViewController") as? MainViewController {
+//                  target.navigationItem.hidesBackButton = true;
+//                  self.navigationController?.pushViewController(target, animated: true)
+//              }
+//          }
+//        }
     }
+    
+    @IBAction func joinRoom(_ sender: Any) {
+        saveName()
+        if (nameTextField!.text! == "") {
+          
+          AlertHelper.warn(delegate: self, message: "_alert_enter_name".localized)
+        }
+//        else {
+//
+//          if (isUpdateScreen) {
+//
+//              self.navigationController?.popViewController(animated: true)
+//          }
+//          else {
+//
+//              if let target = self.storyboard?.instantiateViewController(withIdentifier: "MainViewController") as? MainViewController {
+//                  target.navigationItem.hidesBackButton = true;
+//                  self.navigationController?.pushViewController(target, animated: true)
+//              }
+//          }
+//        }
+
+    }
+    
     
     // MARK: View lifecycle
     override func viewDidLoad()
@@ -73,7 +95,7 @@ class MainViewController: UIViewController, UITextFieldDelegate
         
         let userData = UserData()
         
-        self.navigationItem.title = userData.hasDataFilled ? "_register_title".localized : "_main_page".localized
+        self.navigationItem.title = userData.hasDataFilled ? "_main_page".localized : "_main_page".localized    // ? not needed
                 
         
         nameTextField.text = userData.name
