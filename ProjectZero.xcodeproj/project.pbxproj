@@ -12,6 +12,7 @@
 		29A08B64237CD34800AC3613 /* RoomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A08B63237CD34800AC3613 /* RoomTableViewController.swift */; };
 		29A08B68237CE81C00AC3613 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A08B67237CE81C00AC3613 /* Constants.swift */; };
 		29A08B6A237CE8B800AC3613 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A08B69237CE8B800AC3613 /* Device.swift */; };
+		29B5BF8B237F9E2E00D1ADEF /* Colours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B5BF8A237F9E2E00D1ADEF /* Colours.swift */; };
 		29C8DCC12375F9BA004E60C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C8DCC02375F9BA004E60C3 /* AppDelegate.swift */; };
 		29C8DCC72375F9BB004E60C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29C8DCC62375F9BB004E60C3 /* Assets.xcassets */; };
 		29C8DCCA2375F9BB004E60C3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29C8DCC92375F9BB004E60C3 /* Preview Assets.xcassets */; };
@@ -50,6 +51,7 @@
 		29A08B63237CD34800AC3613 /* RoomTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomTableViewController.swift; sourceTree = "<group>"; };
 		29A08B67237CE81C00AC3613 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = projectzero/Constants.swift; sourceTree = SOURCE_ROOT; };
 		29A08B69237CE8B800AC3613 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Device.swift; path = projectzero/Device.swift; sourceTree = SOURCE_ROOT; };
+		29B5BF8A237F9E2E00D1ADEF /* Colours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Colours.swift; path = projectzero/Colours.swift; sourceTree = SOURCE_ROOT; };
 		29C8DCBD2375F9BA004E60C3 /* ProjectZero.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectZero.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29C8DCC02375F9BA004E60C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		29C8DCC62375F9BB004E60C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				29A08B63237CD34800AC3613 /* RoomTableViewController.swift */,
 				29A08B69237CE8B800AC3613 /* Device.swift */,
 				29A08B5F237CBFA700AC3613 /* RoomsTableViewController.swift */,
+				29B5BF8A237F9E2E00D1ADEF /* Colours.swift */,
 				29A08B67237CE81C00AC3613 /* Constants.swift */,
 				29C8DD07237CA1F7004E60C3 /* StringExtension.swift */,
 				29C8DCF2237B6EA5004E60C3 /* Main.storyboard */,
@@ -306,6 +309,7 @@
 				29C8DD08237CA1F7004E60C3 /* StringExtension.swift in Sources */,
 				29C8DD06237CA1A0004E60C3 /* AlertHelper.swift in Sources */,
 				29A08B68237CE81C00AC3613 /* Constants.swift in Sources */,
+				29B5BF8B237F9E2E00D1ADEF /* Colours.swift in Sources */,
 				E4D0CC98237DF6F200171706 /* RoomTableViewCell.swift in Sources */,
 				29A08B64237CD34800AC3613 /* RoomTableViewController.swift in Sources */,
 				29A08B58237CAD9500AC3613 /* MainViewController.swift in Sources */,

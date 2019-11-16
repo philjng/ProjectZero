@@ -14,7 +14,6 @@ class MainViewController: UIViewController, UITextFieldDelegate
     @IBOutlet weak var nameTextField: UITextField!
     
     var isUpdateScreen : Bool = false
-    
         
     @IBAction func createRoom(_ sender: Any) {
         saveName()
@@ -67,9 +66,11 @@ class MainViewController: UIViewController, UITextFieldDelegate
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        self.view.backgroundColor = blue4
         let userData = UserData()
         isUpdateScreen = userData.hasDataFilled
         setupUI()
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
