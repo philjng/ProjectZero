@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationBarAppearance.barTintColor = blue5
         navigationBarAppearance.tintColor = .white
         navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        
+        Thread.sleep(forTimeInterval: 2.0)
         let userData =  UserData()
         
         // check if all register information required (name, avatar, color) is filled
