@@ -17,10 +17,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         let navigationBarAppearance = UINavigationBar.appearance()
-        navigationBarAppearance.barTintColor = blue5
-        navigationBarAppearance.tintColor = .white
-        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        Thread.sleep(forTimeInterval: 2.0)
+        navigationBarAppearance.barTintColor = lighterTeal
+//        if (lightTheme) {
+//            navigationBarAppearance.barTintColor = lighterTeal
+//
+//        }
+//        else {
+//            navigationBarAppearance.barTintColor = gray6
+//        }
+        
+//        navigationBarAppearance.tintColor = .white
+//        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        Thread.sleep(forTimeInterval: 1.0)
         let userData =  UserData()
         
         // check if all register information required (name, avatar, color) is filled

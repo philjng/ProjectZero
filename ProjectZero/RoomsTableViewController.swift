@@ -26,7 +26,13 @@ class RoomsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = blue3
+        if (lightTheme) {
+            self.view.backgroundColor = blue3
+
+        }
+        else {
+            self.view.backgroundColor = dark4
+        }
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

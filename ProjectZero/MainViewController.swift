@@ -12,6 +12,16 @@ import CoreBluetooth
 class MainViewController: UIViewController, UITextFieldDelegate
 {
     @IBOutlet weak var nameTextField: UITextField!
+    @IBAction func changeTheme(_ sender: Any) {
+        if (lightTheme) {
+            lightTheme = false
+            self.viewDidLoad()
+        }
+        else {
+            lightTheme = true
+            self.viewDidLoad()
+        }
+    }
     
     var isUpdateScreen : Bool = false
         
@@ -66,7 +76,13 @@ class MainViewController: UIViewController, UITextFieldDelegate
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        self.view.backgroundColor = blue4
+        if (lightTheme) {
+            self.view.backgroundColor = systemTeal
+        }
+        else {
+            self.view.backgroundColor = dark5
+        }
+        
         let userData = UserData()
         isUpdateScreen = userData.hasDataFilled
         setupUI()
