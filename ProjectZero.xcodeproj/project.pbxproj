@@ -52,7 +52,7 @@
 		29A08B67237CE81C00AC3613 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = projectzero/Constants.swift; sourceTree = SOURCE_ROOT; };
 		29A08B69237CE8B800AC3613 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Device.swift; path = projectzero/Device.swift; sourceTree = SOURCE_ROOT; };
 		29B5BF8A237F9E2E00D1ADEF /* Colours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Colours.swift; path = projectzero/Colours.swift; sourceTree = SOURCE_ROOT; };
-		29C8DCBD2375F9BA004E60C3 /* ProjectZero.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectZero.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		29C8DCBD2375F9BA004E60C3 /* Vibe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vibe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29C8DCC02375F9BA004E60C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		29C8DCC62375F9BB004E60C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		29C8DCC92375F9BB004E60C3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -111,7 +111,7 @@
 		29C8DCBE2375F9BA004E60C3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				29C8DCBD2375F9BA004E60C3 /* ProjectZero.app */,
+				29C8DCBD2375F9BA004E60C3 /* Vibe.app */,
 				29C8DCD32375F9BC004E60C3 /* ProjectZeroTests.xctest */,
 				29C8DCDE2375F9BC004E60C3 /* ProjectZeroUITests.xctest */,
 			);
@@ -186,7 +186,7 @@
 			);
 			name = ProjectZero;
 			productName = ProjectZero;
-			productReference = 29C8DCBD2375F9BA004E60C3 /* ProjectZero.app */;
+			productReference = 29C8DCBD2375F9BA004E60C3 /* Vibe.app */;
 			productType = "com.apple.product-type.application";
 		};
 		29C8DCD22375F9BC004E60C3 /* ProjectZeroTests */ = {
@@ -477,7 +477,7 @@
 		29C8DCE82375F9BC004E60C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"ProjectZero/Preview Content\"";
 				DEVELOPMENT_TEAM = 8BZBJF5Q7N;
@@ -488,7 +488,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.vibeshare.ProjectZero;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Vibe;
 				SWIFT_ENFORCE_EXCLUSIVE_ACCESS = off;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -498,7 +498,7 @@
 		29C8DCE92375F9BC004E60C3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"ProjectZero/Preview Content\"";
 				DEVELOPMENT_TEAM = 8BZBJF5Q7N;
@@ -509,7 +509,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.vibeshare.ProjectZero;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Vibe;
 				SWIFT_ENFORCE_EXCLUSIVE_ACCESS = off;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
