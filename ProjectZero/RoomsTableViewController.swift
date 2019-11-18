@@ -170,7 +170,6 @@ extension RoomsTableViewController : CBCentralManagerDelegate {
     }
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        print("central manager extension")
         var peripheralName = cachedPeripheralNames[peripheral.identifier.description] ?? "unknown"
         
         if let advertisementName = advertisementData[CBAdvertisementDataLocalNameKey] as? String {
