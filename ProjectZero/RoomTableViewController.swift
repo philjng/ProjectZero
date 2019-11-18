@@ -171,6 +171,7 @@ extension RoomTableViewController {
         else {
             let device = visibleDevices[indexPath.row]
             let advertisementData = device.name.components(separatedBy: "|")
+            
             if (advertisementData[1] == userData.name) {
                 if (advertisementData.count > 1) {
                     

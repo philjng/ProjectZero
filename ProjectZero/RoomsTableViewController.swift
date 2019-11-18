@@ -158,6 +158,5 @@ extension RoomsTableViewController : CBCentralManagerDelegate {
         let device = Device(peripheral: peripheral, name: peripheralName)
         self.addOrUpdatePeripheralList(device: device, list: &visibleDevices)
         self.addOrUpdatePeripheralList(device: device, list: &cachedDevices)
-        print("visible devices: ", visibleDevices)
     }
 }
