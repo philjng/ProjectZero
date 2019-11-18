@@ -135,17 +135,6 @@ extension RoomsTableViewController {
 
 }
 
-//extension RoomsTableViewController : CBPeripheralManagerDelegate {
-//
-//    func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
-//
-//        if (peripheral.state == .poweredOn){
-//
-//            updateAdvertisingData()
-//        }
-//    }
-//}
-
 extension RoomsTableViewController : CBCentralManagerDelegate {
     
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
@@ -169,5 +158,6 @@ extension RoomsTableViewController : CBCentralManagerDelegate {
         let device = Device(peripheral: peripheral, name: peripheralName)
         self.addOrUpdatePeripheralList(device: device, list: &visibleDevices)
         self.addOrUpdatePeripheralList(device: device, list: &cachedDevices)
+        print("visible devices: ", visibleDevices)
     }
 }

@@ -13,6 +13,7 @@ struct UserData {
     private let userDataKey = "userData"
     
     var name: String = ""
+    var hostname: String = ""
     
     var hasDataFilled: Bool {
         return !name.isEmpty
@@ -23,6 +24,8 @@ struct UserData {
         if let dictionary = UserDefaults.standard.dictionary(forKey: userDataKey) {
             
             name = dictionary["name"] as? String ?? ""
+            hostname = dictionary["name"] as? String ?? ""
+
         }
     }
     
@@ -30,6 +33,7 @@ struct UserData {
         
         var dictionary : Dictionary = Dictionary<String, Any>()
         dictionary["name"] = name
+        dictionary["hostname"] = hostname
         UserDefaults.standard.set(dictionary, forKey: userDataKey)
         print("the user's name : ",name,"is successfully saved!")
     }

@@ -163,7 +163,7 @@ extension RoomTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+        let userData = UserData()
         let cell  = tableView.dequeueReusableCell(withIdentifier: "RoomTableViewCell", for: indexPath) as! RoomTableViewCell
         if (visibleDevices.isEmpty) {
             return cell
@@ -171,15 +171,17 @@ extension RoomTableViewController {
         else {
             let device = visibleDevices[indexPath.row]
             let advertisementData = device.name.components(separatedBy: "|")
-            
-            if (advertisementData.count > 1) {
-                
-//                cell.roomNameLabel.text = advertisementData[0]
+            if (advertisementData[1] == userData.name) {
+                if (advertisementData.count > 1) {
+                    
+                    cell.roomNameLabel.text = advertisementData[0]
+                    
+                }
+                else {
+                    cell.roomNameLabel.text = device.name
+                }
+                guestList.append(device)
             }
-            else {
-//                cell.roomNameLabel.text = device.name
-            }
-            
             return cell
         }
     }

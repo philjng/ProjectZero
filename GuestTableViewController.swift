@@ -16,6 +16,7 @@ class GuestTableViewController: UITableViewController {
     var peripheralManager = CBPeripheralManager()
     var hostname:String = ""
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if (lightTheme) {
@@ -26,8 +27,9 @@ class GuestTableViewController: UITableViewController {
             self.view.backgroundColor = dark3
         }
         peripheralManager = CBPeripheralManager(delegate: self, queue: nil)
-        
-
+        var userData = UserData()
+        userData.hostname = hostname
+        userData.save()
     }
     
     func initService() {
@@ -45,7 +47,7 @@ class GuestTableViewController: UITableViewController {
         }
         
         let userData = UserData()
-        let advertisementData = String(format: "%@", userData.name)
+        let advertisementData = String(format: "%@|%d", userData.name, userData.hostname)
         
         peripheralManager.startAdvertising([CBAdvertisementDataServiceUUIDsKey:[Constants.SERVICE_UUID], CBAdvertisementDataLocalNameKey: advertisementData])
     }
@@ -60,7 +62,6 @@ class GuestTableViewController: UITableViewController {
 
 extension GuestTableViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        print("creating header...:", hostname)
         return "\(hostname)'s room"
         
     }
