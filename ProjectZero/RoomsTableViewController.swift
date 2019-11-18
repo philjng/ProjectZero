@@ -21,7 +21,7 @@ class RoomsTableViewController: UITableViewController {
     var cachedDevices = Array<Device>()
     var cachedPeripheralNames = Dictionary<String, String>()
     var timer = Timer()
-    var hostname: String
+    var hostname: String = ""
 
     
     
@@ -43,7 +43,6 @@ class RoomsTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
-        updateAdvertisingData()
     }
     
     func scheduledTimerWithTimeInterval(){
@@ -142,8 +141,8 @@ extension RoomsTableViewController {
         
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: <#T##IndexPath#>) as! RoomsTableViewCell!
-        hostname = cell?.roomsNameLabel.text
+        let cell = tableView.cellForRow(at: indexPath as IndexPath) as! RoomsTableViewCell
+        hostname = cell.roomsNameLabel.text ?? ""
     }
 
 }
