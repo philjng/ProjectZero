@@ -154,7 +154,6 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="roomsNameLabel" destination="16r-R1-OO1" id="lUn-rH-cIh"/>
-                                    <segue destination="T27-Ta-dvt" kind="show" id="Ccr-8X-jlx"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -164,6 +163,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="UCm-WN-QIq"/>
+                    <connections>
+                        <segue destination="T27-Ta-dvt" kind="show" id="eN6-Zb-oEb"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UFF-Bw-O6d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -172,7 +174,7 @@
         <!--Guest Table View Controller-->
         <scene sceneID="vL6-wI-f5N">
             <objects>
-                <tableViewController storyboardIdentifier="GuestTableViewController" id="T27-Ta-dvt" customClass="GuestTableViewController" customModule="Vibe" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="GuestTableViewController" id="T27-Ta-dvt" customClass="GuestTableViewController" customModule="ProjectZero" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Otm-mU-Czh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

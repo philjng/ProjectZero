@@ -90,24 +90,9 @@ class RoomsTableViewController: UITableViewController {
             
         }
     }
-    
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.description is GuestTableViewController {
-            
-            let vc = segue.destination as? GuestTableViewController
-            vc?.hostname = hostname
-        }
+        let vc = segue.destination as? GuestTableViewController
+        vc?.hostname = hostname
     }
 
 }
@@ -140,9 +125,11 @@ extension RoomsTableViewController {
         }
         
     }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath as IndexPath) as! RoomsTableViewCell
         hostname = cell.roomsNameLabel.text ?? ""
+        print("hostname: ", hostname)
     }
 
 }
