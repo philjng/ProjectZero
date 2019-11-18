@@ -130,7 +130,6 @@ extension RoomsTableViewController {
         let cell = tableView.cellForRow(at: indexPath as IndexPath) as! RoomsTableViewCell
         hostname = cell.roomsNameLabel.text ?? ""
         vc?.hostname = hostname
-        print("hostname: ", hostname)
     }
 
 }

@@ -48,7 +48,6 @@ class GuestTableViewController: UITableViewController {
         
         let userData = UserData()
         let advertisementData = String(format: "%@|%@", userData.name, hostname)
-        print("advertisement data: ", advertisementData)
         
         peripheralManager.startAdvertising([CBAdvertisementDataServiceUUIDsKey:[Constants.SERVICE_UUID], CBAdvertisementDataLocalNameKey: advertisementData])
     }
