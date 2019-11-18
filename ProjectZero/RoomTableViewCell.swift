@@ -12,5 +12,5 @@ class RoomTableViewCell: UITableViewCell {
 
     
     @IBOutlet weak var roomNameLabel: UILabel!
-    
+
 }

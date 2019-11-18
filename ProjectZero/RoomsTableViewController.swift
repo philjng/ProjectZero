@@ -111,15 +111,13 @@ class RoomsTableViewController: UITableViewController {
 
 extension RoomsTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return visibleDevices.count
-//        return 1
+        return visibleDevices.count // had to remove exclusive memory access restriction at runtime
     }
 
     // make a cell for each cell index path
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: roomsCellReuseIdentifier, for: indexPath as IndexPath) as! RoomsTableViewCell
-//        print("visibleDevices[indexPath.row]: ", visibleDevices[indexPath.row])
         if (visibleDevices.isEmpty) {
             return cell
         }
@@ -177,7 +175,7 @@ extension RoomsTableViewController : CBCentralManagerDelegate {
     }
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        
+        print("central manager extension")
         var peripheralName = cachedPeripheralNames[peripheral.identifier.description] ?? "unknown"
         
         if let advertisementName = advertisementData[CBAdvertisementDataLocalNameKey] as? String {

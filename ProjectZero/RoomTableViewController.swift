@@ -20,6 +20,7 @@ class RoomTableViewController: UITableViewController {
     var peripheralManager = CBPeripheralManager()
     var visibleDevices = Array<Device>()
     var cachedDevices = Array<Device>()
+    var timer = Timer()
 
     
     override func viewDidLoad() {
@@ -39,7 +40,6 @@ class RoomTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
         centralManager = CBCentralManager(delegate: self, queue: DispatchQueue.main)
-//        print("central manager: ", centralManager)
         peripheralManager = CBPeripheralManager(delegate: self, queue: nil)
     }
     
@@ -63,13 +63,17 @@ class RoomTableViewController: UITableViewController {
 
         peripheralManager.add(serialService)
     }
-//
-//    @objc func clearPeripherals(){
-//
-//        visibleDevices = cachedDevices
-//        cachedDevices.removeAll()
-//        tableView?.reloadData()
-//    }
+
+    func scheduledTimerWithTimeInterval(){
+
+        timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.clearPeripherals), userInfo: nil, repeats: true)
+    }
+    
+    @objc func clearPeripherals(){
+        visibleDevices = cachedDevices
+        cachedDevices.removeAll()
+        tableView?.reloadData()
+    }
     
     func addOrUpdatePeripheralList(device: Device, list: inout Array<Device>) {
 
@@ -149,41 +153,49 @@ extension RoomTableViewController : CBPeripheralManagerDelegate {
 
 }
 
-//extension RoomTableViewController {
-//
-//    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//        return 1
-//    }
-//
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 1
-//    }
+extension RoomTableViewController {
+
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return visibleDevices.count
+    }
     
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//
-//        let cell  = tableView.dequeueReusableCell(withIdentifier: "RoomTableViewCell", for: indexPath) as! RoomTableViewCell
-//        print("this is indexpath.row", indexPath.row)
-//
-//        let device = visibleDevices[indexPath.row]
-//
-//        let advertisementData = device.name.components(separatedBy: "|")
-//
-//        if (advertisementData.count > 1) {
-//
-//            cell.roomNameLabel.text = advertisementData[0]
-//        }
-//        else {
-//            cell.roomNameLabel.text = device.name
-//        }
-//
-//        return cell
-//    }
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let userData = UserData()
+        return "\(userData.name)'s room"
+        
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return visibleDevices.count
+    }
     
-//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//
-//        return UITableView.automaticDimension
-//    }
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        let cell  = tableView.dequeueReusableCell(withIdentifier: "RoomTableViewCell", for: indexPath) as! RoomTableViewCell
+        if (visibleDevices.isEmpty) {
+            return cell
+        }
+        else {
+            let device = visibleDevices[indexPath.row]
+            let advertisementData = device.name.components(separatedBy: "|")
+            
+            if (advertisementData.count > 1) {
+                
+                cell.roomNameLabel.text = advertisementData[0]
+            }
+            else {
+                cell.roomNameLabel.text = device.name
+            }
+            
+            return cell
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+
+        return UITableView.automaticDimension
+    }
      
 
     
-//}
+}
