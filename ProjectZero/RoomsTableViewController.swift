@@ -22,7 +22,8 @@ class RoomsTableViewController: UITableViewController {
     var cachedPeripheralNames = Dictionary<String, String>()
     var timer = Timer()
     var hostname: String = ""
-
+    
+    var vc: GuestTableViewController?
     
     
     override func viewDidLoad() {
@@ -91,8 +92,7 @@ class RoomsTableViewController: UITableViewController {
         }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = segue.destination as? GuestTableViewController
-        vc?.hostname = hostname
+        vc = segue.destination as? GuestTableViewController
     }
 
 }
@@ -129,6 +129,7 @@ extension RoomsTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath as IndexPath) as! RoomsTableViewCell
         hostname = cell.roomsNameLabel.text ?? ""
+        vc?.hostname = hostname
         print("hostname: ", hostname)
     }
 

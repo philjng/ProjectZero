@@ -154,6 +154,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="roomsNameLabel" destination="16r-R1-OO1" id="lUn-rH-cIh"/>
+                                    <segue destination="T27-Ta-dvt" kind="show" id="XLZ-Qq-CZK"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -163,9 +164,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="UCm-WN-QIq"/>
-                    <connections>
-                        <segue destination="T27-Ta-dvt" kind="show" id="eN6-Zb-oEb"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UFF-Bw-O6d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
