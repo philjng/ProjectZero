@@ -20,6 +20,7 @@ class RoomTableViewController: UITableViewController {
     var peripheralManager = CBPeripheralManager()
     var visibleDevices = Array<Device>()
     var cachedDevices = Array<Device>()
+    var guestList = Array<Device>()
     var timer = Timer()
 
     
@@ -32,12 +33,6 @@ class RoomTableViewController: UITableViewController {
         else{
             self.view.backgroundColor = dark3
         }
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
         centralManager = CBCentralManager(delegate: self, queue: DispatchQueue.main)
         peripheralManager = CBPeripheralManager(delegate: self, queue: nil)
@@ -112,7 +107,6 @@ extension RoomTableViewController : CBCentralManagerDelegate {
     }
 
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        print("here")
         var peripheralName = cachedPeripheralNames[peripheral.identifier.description] ?? "unknown"
 
         if let advertisementName = advertisementData[CBAdvertisementDataLocalNameKey] as? String {
@@ -124,7 +118,6 @@ extension RoomTableViewController : CBCentralManagerDelegate {
         let device = Device(peripheral: peripheral, name: peripheralName)
         self.addOrUpdatePeripheralList(device: device, list: &visibleDevices)
         self.addOrUpdatePeripheralList(device: device, list: &cachedDevices)
-        print("host visible devices (should be none until someone joins the room: ", visibleDevices)
     }
 }
 
@@ -181,10 +174,10 @@ extension RoomTableViewController {
             
             if (advertisementData.count > 1) {
                 
-                cell.roomNameLabel.text = advertisementData[0]
+//                cell.roomNameLabel.text = advertisementData[0]
             }
             else {
-                cell.roomNameLabel.text = device.name
+//                cell.roomNameLabel.text = device.name
             }
             
             return cell

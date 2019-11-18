@@ -13,7 +13,7 @@ class RoomsTableViewController: UITableViewController {
     
 //    var lock = NSLock()
     
-    var peripheralManager = CBPeripheralManager()
+//    var peripheralManager = CBPeripheralManager()
     var centralManager: CBCentralManager?
     
     let roomsCellReuseIdentifier = "RoomsTableViewCell"
@@ -21,6 +21,7 @@ class RoomsTableViewController: UITableViewController {
     var cachedDevices = Array<Device>()
     var cachedPeripheralNames = Dictionary<String, String>()
     var timer = Timer()
+    var hostname: String
 
     
     
@@ -34,11 +35,6 @@ class RoomsTableViewController: UITableViewController {
             self.view.backgroundColor = dark4
         }
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
         centralManager = CBCentralManager(delegate: self, queue: DispatchQueue.main)
      
         scheduledTimerWithTimeInterval()
@@ -61,17 +57,16 @@ class RoomsTableViewController: UITableViewController {
         tableView?.reloadData()
     }
     
-    func updateAdvertisingData() {
-        print("also here doing stuff i shouldn't be")
-        if (peripheralManager.isAdvertising) {
-            peripheralManager.stopAdvertising()
-        }
-        
-        let userData = UserData()
-        let advertisementData = String(format: "%@", userData.name)
-        
-        peripheralManager.startAdvertising([CBAdvertisementDataServiceUUIDsKey:[Constants.SERVICE_UUID], CBAdvertisementDataLocalNameKey: advertisementData])
-    }
+//    func updateAdvertisingData() {
+//        if (peripheralManager.isAdvertising) {
+//            peripheralManager.stopAdvertising()
+//        }
+//
+//        let userData = UserData()
+//        let advertisementData = String(format: "%@", userData.name)
+//
+//        peripheralManager.startAdvertising([CBAdvertisementDataServiceUUIDsKey:[Constants.SERVICE_UUID], CBAdvertisementDataLocalNameKey: advertisementData])
+//    }
     
     func addOrUpdatePeripheralList(device: Device, list: inout Array<Device>) {
 
@@ -106,6 +101,15 @@ class RoomsTableViewController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.description is GuestTableViewController {
+            
+            let vc = segue.destination as? GuestTableViewController
+            vc?.hostname = hostname
+        }
+    }
 
 }
 
@@ -137,20 +141,12 @@ extension RoomsTableViewController {
         }
         
     }
-
-}
-
-extension RoomsTableViewController {
-
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//
-//        let chatViewController = ChatViewController()
-//        chatViewController.deviceUUID = visibleDevices[indexPath.row].peripheral.identifier
-//        chatViewController.deviceAttributes = visibleDevices[indexPath.row].name
-//        self.navigationController?.pushViewController(chatViewController, animated: true)
+        let cell = tableView.cellForRow(at: <#T##IndexPath#>) as! RoomsTableViewCell!
+        hostname = cell?.roomsNameLabel.text
     }
-}
 
+}
 
 //extension RoomsTableViewController : CBPeripheralManagerDelegate {
 //
@@ -187,6 +183,5 @@ extension RoomsTableViewController : CBCentralManagerDelegate {
         let device = Device(peripheral: peripheral, name: peripheralName)
         self.addOrUpdatePeripheralList(device: device, list: &visibleDevices)
         self.addOrUpdatePeripheralList(device: device, list: &cachedDevices)
-        print("visible devices: ", visibleDevices)
     }
 }
