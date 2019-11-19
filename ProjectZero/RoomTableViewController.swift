@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreBluetooth
+import AVFoundation
 
 class RoomTableViewController: UITableViewController {
 
@@ -120,6 +121,8 @@ extension RoomTableViewController : CBCentralManagerDelegate {
         let device = Device(peripheral: peripheral, name: peripheralName)
         if (device.name.contains("|") && !visibleDevices.contains(where: { $0.peripheral.identifier == device.peripheral.identifier })) {
             let advertisementData = device.name.components(separatedBy: "|")
+            print(advertisementData)
+            print("what is the userdataname here",userData.name)
             if (advertisementData[1] == userData.name) {
                 central.connect(peripheral, options:nil)
                 print("connected: ", device)
@@ -133,6 +136,12 @@ extension RoomTableViewController : CBCentralManagerDelegate {
 
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         // want to try setting up audio stream here
+        let audioSession = AVAudioSession.sharedInstance()
+        do {
+            try audioSession.setCategory(AVAudioSession.Category.playback)
+        } catch {
+            print("Setting category to AVAudioSessionCategoryPlayback failed.")
+        }
     }
     
 }
