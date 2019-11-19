@@ -131,7 +131,7 @@ extension RoomTableViewController : CBCentralManagerDelegate {
     }
     
 
-    optional func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
+    func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         // want to try setting up audio stream here
     }
     
