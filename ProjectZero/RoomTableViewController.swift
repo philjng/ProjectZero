@@ -136,9 +136,9 @@ extension RoomTableViewController : CBCentralManagerDelegate {
 
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         // want to try setting up audio stream here
-        let audioSession = AVAudioSession.sharedInstance()
         do {
-            try audioSession.setCategory(AVAudioSession.Category.playback)
+            try AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: .default, options: [.mixWithOthers, .allowBluetooth, .allowAirPlay, .allowBluetoothA2DP,.defaultToSpeaker])
+            print("sharing")
         } catch {
             print("Setting category to AVAudioSessionCategoryPlayback failed.")
         }
