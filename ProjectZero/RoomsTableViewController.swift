@@ -145,6 +145,11 @@ extension RoomsTableViewController : CBCentralManagerDelegate {
         }
     }
     
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Rooms"
+        
+    }
+    
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         var peripheralName = cachedPeripheralNames[peripheral.identifier.description] ?? "unknown"
         

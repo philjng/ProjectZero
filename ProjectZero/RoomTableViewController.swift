@@ -22,7 +22,8 @@ class RoomTableViewController: UITableViewController {
     var cachedDevices = Array<Device>()
     var guestList = Array<Device>()
     var timer = Timer()
-
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,6 +108,7 @@ extension RoomTableViewController : CBCentralManagerDelegate {
     }
 
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
+        let userData = UserData()
         var peripheralName = cachedPeripheralNames[peripheral.identifier.description] ?? "unknown"
 
         if let advertisementName = advertisementData[CBAdvertisementDataLocalNameKey] as? String {
@@ -116,9 +118,23 @@ extension RoomTableViewController : CBCentralManagerDelegate {
         }
         
         let device = Device(peripheral: peripheral, name: peripheralName)
+        if (device.name.contains("|") && !visibleDevices.contains(where: { $0.peripheral.identifier == device.peripheral.identifier })) {
+            let advertisementData = device.name.components(separatedBy: "|")
+            if (advertisementData[1] == userData.name) {
+                central.connect(peripheral, options:nil)
+                print("connected: ", device)
+                
+            }
+        }
         self.addOrUpdatePeripheralList(device: device, list: &visibleDevices)
         self.addOrUpdatePeripheralList(device: device, list: &cachedDevices)
     }
+    
+
+    optional func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
+        // want to try setting up audio stream here
+    }
+    
 }
 
 //extension RoomTableViewController : CBPeripheralDelegate {
@@ -170,19 +186,21 @@ extension RoomTableViewController {
         }
         else {
             let device = visibleDevices[indexPath.row]
-            let advertisementData = device.name.components(separatedBy: "|")
-            
-            if (advertisementData[1] == userData.name) {
-                if (advertisementData.count > 1) {
-                    
-                    cell.roomNameLabel.text = advertisementData[0]
-                    
+            if device.name.contains("|") {
+                let advertisementData = device.name.components(separatedBy: "|")
+                if (advertisementData[1] == userData.name) {
+                    if (advertisementData.count > 1) {
+                        
+                        cell.roomNameLabel.text = advertisementData[0]
+                        
+                    }
+                    else {
+                        cell.roomNameLabel.text = device.name
+                    }
+                    guestList.append(device)
                 }
-                else {
-                    cell.roomNameLabel.text = device.name
-                }
-                guestList.append(device)
             }
+            
             return cell
         }
     }
