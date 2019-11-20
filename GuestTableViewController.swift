@@ -77,5 +77,17 @@ extension GuestTableViewController : CBPeripheralManagerDelegate {
             updateAdvertisingData()
         }
     }
+    
+    func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveWrite requests: [CBATTRequest]) {
+        
+        for request in requests {
+            if let value = request.value {
+                
+                let messageText = String(data: value, encoding: String.Encoding.utf8)!
+                print("message received from central: ", messageText)
+            }
+            self.peripheralManager.respond(to: request, withResult: .success)
+        }
+    }
 
 }

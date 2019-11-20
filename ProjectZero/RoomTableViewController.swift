@@ -9,6 +9,7 @@
 import UIKit
 import CoreBluetooth
 import AVFoundation
+import MediaPlayer
 
 class RoomTableViewController: UITableViewController {
 
@@ -121,42 +122,74 @@ extension RoomTableViewController : CBCentralManagerDelegate {
         let device = Device(peripheral: peripheral, name: peripheralName)
         if (device.name.contains("|") && !visibleDevices.contains(where: { $0.peripheral.identifier == device.peripheral.identifier })) {
             let advertisementData = device.name.components(separatedBy: "|")
-            print(advertisementData)
-            print("what is the userdataname here",userData.name)
             if (advertisementData[1] == userData.name) {
                 central.connect(peripheral, options:nil)
-                print("connected: ", device)
-                
+
             }
         }
+//        if (device.name.contains("|")) {
+//            let advertisementData = device.name.components(separatedBy: "|")
+//            print(advertisementData)
+//            if (advertisementData[1] == userData.name) {
+//                central.connect(peripheral, options:nil)
+//                print("connected: ", device)
+//
+//            }
+//        }
+        
         self.addOrUpdatePeripheralList(device: device, list: &visibleDevices)
         self.addOrUpdatePeripheralList(device: device, list: &cachedDevices)
     }
-    
 
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
+        print("connected: ", peripheral)
+        peripheral.delegate = self
+        peripheral.discoverServices(nil)
         // want to try setting up audio stream here
-        do {
-            try AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: .default, options: [.mixWithOthers, .allowBluetooth, .allowAirPlay, .allowBluetoothA2DP,.defaultToSpeaker])
-            print("sharing")
-        } catch {
-            print("Setting category to AVAudioSessionCategoryPlayback failed.")
-        }
+//        let musicPlayer = MPMusicPlayerApplicationController.applicationQueuePlayer
+        // Add a playback queue containing all songs on the device.
+//        musicPlayer.setQueue(with: .songs())
+        // Start playing from the beginning of the queue.
+//        musicPlayer.play()
+//        do {
+//            try AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: .default, options: [.mixWithOthers, .allowBluetooth, .allowAirPlay, .allowBluetoothA2DP,.defaultToSpeaker])
+//            print("sharing")
+//        } catch {
+//            print("Setting category to AVAudioSessionCategoryPlayback failed.")
+//        }
     }
     
 }
 
-//extension RoomTableViewController : CBPeripheralDelegate {
-//
-//    func peripheral( _ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
-//
-//        for service in peripheral.services! {
-//
-//            peripheral.discoverCharacteristics(nil, for: service)
-//        }
-//    }
-//
-//}
+extension RoomTableViewController : CBPeripheralDelegate {
+
+    func peripheral( _ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
+
+        for service in peripheral.services! {
+
+            peripheral.discoverCharacteristics(nil, for: service)
+        }
+    }
+    
+    func peripheral(
+        _ peripheral: CBPeripheral,
+        didDiscoverCharacteristicsFor service: CBService,
+        error: Error?) {
+        
+        for characteristic in service.characteristics! {
+            
+            let characteristic = characteristic as CBCharacteristic
+            if (characteristic.uuid.isEqual(Constants.RX_UUID)) {
+                let messageText = "hi, this is data to transfer"
+                    let data = messageText.data(using: .utf8)
+                    peripheral.writeValue(data!, for: characteristic, type: CBCharacteristicWriteType.withResponse)
+                    
+            }
+            
+        }
+    }
+
+}
 
 extension RoomTableViewController : CBPeripheralManagerDelegate {
 
