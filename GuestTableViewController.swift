@@ -10,6 +10,7 @@
 
 import UIKit
 import CoreBluetooth
+import MediaPlayer
 
 class GuestTableViewController: UITableViewController {
 
@@ -79,10 +80,10 @@ extension GuestTableViewController : CBPeripheralManagerDelegate {
     }
     
     func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveWrite requests: [CBATTRequest]) {
-        
+//        let musicPlayer = MPMusicPlayerApplicationController.applicationQueuePlayer
         for request in requests {
             if let value = request.value {
-                
+//                let musicPlayer = (data: value, encoding: encoding.utf8)
                 let messageText = String(data: value, encoding: String.Encoding.utf8)!
                 print("message received from central: ", messageText)
             }

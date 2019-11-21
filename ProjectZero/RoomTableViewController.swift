@@ -13,6 +13,8 @@ import MediaPlayer
 
 class RoomTableViewController: UITableViewController {
 
+    let musicPlayer = MPMusicPlayerApplicationController.systemMusicPlayer
+
     var deviceUUID : UUID?
     var deviceAttributes : String = ""
     var selectedPeripheral : CBPeripheral?
@@ -107,6 +109,8 @@ extension RoomTableViewController : CBCentralManagerDelegate {
             self.centralManager?.scanForPeripherals(withServices: [Constants.SERVICE_UUID], options: [CBCentralManagerScanOptionAllowDuplicatesKey : true])
 
         }
+        musicPlayer.play()
+
     }
 
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
@@ -145,18 +149,6 @@ extension RoomTableViewController : CBCentralManagerDelegate {
         print("connected: ", peripheral)
         peripheral.delegate = self
         peripheral.discoverServices(nil)
-        // want to try setting up audio stream here
-//        let musicPlayer = MPMusicPlayerApplicationController.applicationQueuePlayer
-        // Add a playback queue containing all songs on the device.
-//        musicPlayer.setQueue(with: .songs())
-        // Start playing from the beginning of the queue.
-//        musicPlayer.play()
-//        do {
-//            try AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: .default, options: [.mixWithOthers, .allowBluetooth, .allowAirPlay, .allowBluetoothA2DP,.defaultToSpeaker])
-//            print("sharing")
-//        } catch {
-//            print("Setting category to AVAudioSessionCategoryPlayback failed.")
-//        }
     }
     
 }
@@ -176,13 +168,19 @@ extension RoomTableViewController : CBPeripheralDelegate {
         didDiscoverCharacteristicsFor service: CBService,
         error: Error?) {
         
+        var url:NSURL!
+        let songItem = musicPlayer.nowPlayingItem
+        url = songItem?.value(forProperty: MPMediaItemPropertyAssetURL) as! NSURL
+        print("url: ", url ?? "empty")
+        print("songItem: ", songItem)
+        var urlstring: String
         for characteristic in service.characteristics! {
             
             let characteristic = characteristic as CBCharacteristic
             if (characteristic.uuid.isEqual(Constants.RX_UUID)) {
-                let messageText = "hi, this is data to transfer"
-                    let data = messageText.data(using: .utf8)
-                    peripheral.writeValue(data!, for: characteristic, type: CBCharacteristicWriteType.withResponse)
+                let message = url.absoluteString
+                let data = message?.data(using: .utf8)
+                peripheral.writeValue(data!, for: characteristic, type: CBCharacteristicWriteType.withResponse)
                     
             }
             
