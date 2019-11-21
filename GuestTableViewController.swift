@@ -14,6 +14,8 @@ import MediaPlayer
 
 class GuestTableViewController: UITableViewController {
 
+//    let musicPlayer = MPMusicPlayerApplicationController.systemMusicPlayer
+    var musicPlayer: AVPlayer!
     var peripheralManager = CBPeripheralManager()
     var hostname:String = ""
     
@@ -81,11 +83,17 @@ extension GuestTableViewController : CBPeripheralManagerDelegate {
     
     func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveWrite requests: [CBATTRequest]) {
 //        let musicPlayer = MPMusicPlayerApplicationController.applicationQueuePlayer
+        var url: NSURL!
+        var playerItem: AVPlayerItem
         for request in requests {
             if let value = request.value {
 //                let musicPlayer = (data: value, encoding: encoding.utf8)
-                let messageText = String(data: value, encoding: String.Encoding.utf8)!
-                print("message received from central: ", messageText)
+                let message = String(data: value, encoding: String.Encoding.utf8)!
+                print("message received from central: ", message)
+                url = URL(string: message) as NSURL?
+                playerItem = AVPlayerItem(url: url! as URL)
+                musicPlayer = AVPlayer(playerItem: playerItem)
+                musicPlayer.play()
             }
             self.peripheralManager.respond(to: request, withResult: .success)
         }
