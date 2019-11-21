@@ -17,7 +17,8 @@ import AVFoundation
 class GuestTableViewController: UITableViewController {
 
 //    let musicPlayer = MPMusicPlayerApplicationController.systemMusicPlayer
-
+    var musicPlayer = AVPlayer()
+    
     var peripheralManager = CBPeripheralManager()
     var hostname:String = ""
     
@@ -79,9 +80,9 @@ extension GuestTableViewController : CBPeripheralManagerDelegate {
         
         var downloadTask:URLSessionDownloadTask
         downloadTask = URLSession.shared.downloadTask(with: url as URL, completionHandler: { [weak self](URL, response, error) -> Void in
-            let musicPlayer = AVPlayer(url: URL!)
+            self!.musicPlayer = AVPlayer(url: URL!)
 
-            musicPlayer.play()
+            self!.musicPlayer.play()
         })
 
         downloadTask.resume()
