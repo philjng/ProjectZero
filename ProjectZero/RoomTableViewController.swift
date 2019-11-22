@@ -173,13 +173,16 @@ extension RoomTableViewController : CBPeripheralDelegate {
         url = songItem?.value(forProperty: MPMediaItemPropertyAssetURL) as! NSURL
         print("url: ", url ?? "empty")
         print("songItem: ", songItem)
-        var urlstring: String
+        var data: Data? = nil
         for characteristic in service.characteristics! {
             
             let characteristic = characteristic as CBCharacteristic
             if (characteristic.uuid.isEqual(Constants.RX_UUID)) {
-                let message = url.absoluteString
-                let data = message?.data(using: .utf8)
+                do {
+                data = try Data(contentsOf: url as URL)
+                } catch {
+                    print(error)
+                }
                 peripheral.writeValue(data!, for: characteristic, type: CBCharacteristicWriteType.withResponse)
                     
             }
